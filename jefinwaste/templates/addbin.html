@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% load static %}
+{% block homemaincontainer %}
+<div class="addbincontainer">
+    <form action="{% url 'addbin' %}" method="post">
+        {% csrf_token %}
+        <label for="latitude">Latitude:</label>
+        <input type="text" name="latitude" id="latitude" pattern="[-+]?[0-9]*\.?[0-9]+" title="Enter a valid latitude (e.g., 9.392594)" required>
+        <label for="longitude">Longitude:</label>
+        <input type="text" name="longitude" id="longitude" pattern="[-+]?[0-9]*\.?[0-9]+" title="Enter a valid longitude (e.g., 76.604893)" required>
+        <button type="submit">ADD BIN</button>
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock homemaincontainer %}

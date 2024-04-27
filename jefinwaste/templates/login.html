@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block maincontent %}
+
+<div class="loginmaincontainer">
+    <div class="logincontainer">
+        <form method="post" action="{% url 'login_page' %}">
+            {% csrf_token %}
+            <div class="loginheading"><H2>Signin</H2></div>
+        <div class="loginusername">
+            <label for="username">Username:</label><br>
+            <input type="text" name="username" maxlength="40" required>
+        </div>
+        <div class="loginpassword">
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" >
+        </div>
+        <div class="loginbutton">
+            <button type="submit">Login</button>
+        </div>
+        <div class="registerbutton">
+            <p>Does not have an account</p>
+            <button><a href="{% url 'register_page' %}">Register</a></button>
+        </div>
+        </form>
+        
+    </div>
+</div>
+{% endblock maincontent %}
+

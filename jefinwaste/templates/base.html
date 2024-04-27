@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jefin Waste</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="root">
+        <div class="header">
+        {% block header %}
+        
+        {% endblock header %}
+        </div>
+        <div class="maincontent">
+            {% block maincontent %}
+            
+            {% endblock maincontent %}
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>

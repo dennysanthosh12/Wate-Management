@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block header %}
+{% if user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% endif %}
+{% endblock header %}
+{% block maincontent %}
+<div class="maincontentcontainer">
+    <div class="mainbuttons">
+        <button class="button-19"><a href="{% url 'showbin' %}">Show Bins</a></button>
+        <button class="button-19"><a href="{% url 'addbin' %}">Add Bins</a></button>
+        <button class="button-19"><a href="{% url 'calculate' %}">Calculate Distance</a></button>
+        <button class="button-19"><a href="{% url 'deletebin' %}">Delete Bins</a></button>
+    </div>
+    <div class="homemaincontainer" id="homemaincontainer">
+        {% block homemaincontainer %}
+            <!-- This block will be replaced by the initial content rendered by the view -->
+        {% endblock homemaincontainer %}
+    </div>
+</div>
+{% endblock maincontent %}

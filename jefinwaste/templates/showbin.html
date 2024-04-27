@@ -1,0 +1,81 @@
+{% extends "home.html" %}
+{% load static %}
+{% block homemaincontainer %}
+<div class="BinChart">
+    <canvas id="binChart" width="400" height="400"></canvas>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('binChart').getContext('2d');
+        var currentBinContents = [];
+    
+        // Initialize the chart with initial data
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [], // Empty labels array initially
+                datasets: [{
+                    label: 'Bin Content',
+                    data: [], // Empty data array initially
+                    backgroundColor: 'rgba(0, 0, 0, 1)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 150,
+                        ticks: {
+                            stepSize: 25
+                        }
+                    }
+                }
+            }
+        });
+    
+        // Function to update chart data based on new bin contents
+        function updateChartData(newBinContents) {
+            // Update chart data with new bin contents
+            myChart.data.labels = newBinContents.map((_, index) => 'Bin ' + (index + 1));
+            myChart.data.datasets[0].data = newBinContents;
+            myChart.update(); // Update the chart
+        }
+    
+        // Function to fetch updated bin_contents data from the server
+        function fetchAndUpdateChartData() {
+            fetch('http://127.0.0.1:8000/get-bin-contents/', {
+                cache: 'no-cache'
+            })
+            .then(response => response.json())
+            .then(data => {
+                var newBinContents = data.bin_contents;
+    
+                // Compare new bin contents with the previous ones
+                if (!arraysEqual(currentBinContents, newBinContents)) {
+                    currentBinContents = newBinContents; // Update current bin contents
+                    updateChartData(newBinContents); // Update chart with new data
+                }
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+    
+        // Call the fetchAndUpdateChartData function initially
+        fetchAndUpdateChartData();
+    
+        // Refresh the chart data every 5 seconds (adjust interval as needed)
+        setInterval(fetchAndUpdateChartData, 5000);
+    
+        // Utility function to compare two arrays
+        function arraysEqual(arr1, arr2) {
+            if (arr1.length !== arr2.length) return false;
+            for (var i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) return false;
+            }
+            return true;
+        }
+    });
+    </script>
+{% endblock homemaincontainer %}

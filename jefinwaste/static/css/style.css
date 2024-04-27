@@ -1,0 +1,193 @@
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.root{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.header,.footer{
+    width: 100%;
+    height: 10%;
+    background-color: rgb(120, 200, 100);
+}
+.root.footer{
+    width: 100%;
+    height: 10%;
+    background-color: rgb(120, 200, 100);
+    position: fixed;
+    bottom: 0;
+}
+.maincontent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 80%;
+    margin-right: 2vw;
+    background-image: url('/static/images/mainbg.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.loginmaincontainer{
+    width: 30%;
+    min-width: 30vw;
+    height: 70%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logincontainer{
+    height: 100%;
+    width: 80%;
+    background-color: rgba(120, 200, 100, 0.616);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 1vw;
+}
+.binmaincontainer{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bincontainer{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.binfull{
+    width: 4vw;
+    height: 5vh;
+    border: solid 10px black;
+}
+.maincontentcontainer{
+    width: 100%;
+    height: 100%;
+    background-color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainbuttons{
+    width:20%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: white;
+    padding: 10px;
+}
+.homemaincontainer{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.BinChart{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-19 {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.button-19:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+.button-19 a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.bin-grid {
+    display: flex;
+    flex-wrap: wrap; /* Enable wrapping to next row */
+    justify-content: flex-start; /* Start items from the beginning of each row */
+}
+.bin-item {
+    flex-basis: 20%; /* Each item takes up 20% of the container width (5 items per row) */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in the width calculation */
+}
+.bin-details {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+.messages {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}

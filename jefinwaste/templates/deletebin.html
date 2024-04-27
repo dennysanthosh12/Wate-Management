@@ -1,0 +1,34 @@
+{% extends "home.html" %}
+{% load static %}
+{% block homemaincontainer %}
+<div class="deletebincontainer">
+    {% if bins %}
+        <div class="bin-grid">
+            {% for bin in bins %}
+                <div class="bin-item">
+                    <div class="bin-details">
+                        <p>Bin ID: {{ bin.Bin_Id }}</p>
+                        <p>Latitude: {{ bin.latitude }}</p>
+                        <p>Longitude: {{ bin.longitude }}</p>
+                    </div>
+                    <!-- Delete form for each Bin -->
+                    <form method="post" action="{% url 'delete_bin' bin_id=bin.Bin_Id %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No bins available.</p>
+    {% endif %}
+    
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock homemaincontainer %}
