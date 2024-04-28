@@ -23,7 +23,7 @@
                 <li>{{ bin.name }} - Latitude: {{ bin.latitude }}, Longitude: {{ bin.longitude }}</li>
             {% endfor %}
         </ol>
-        <p>Total Cost: {{ best_cost }}</p>
+        <p>Total Cost: {{ best_cost|floatformat:"2" }} km</p>
     {% endif %}
 
 </div>
